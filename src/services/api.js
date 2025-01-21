@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = '3e736dba7151eb8de28a065916dc9d70';
+const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = 'https://api.unleashnfts.com/api/v2/nft';
 
 const api = axios.create({

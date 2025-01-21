@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import ContractMetricsAIBox from './AIAnalysis/ContractMetricsAIBox';
 
 const ContractMetricsBox = ({ metrics, isExpanded, onToggle }) => {
   // Format currency
@@ -104,7 +105,8 @@ const ContractMetricsBox = ({ metrics, isExpanded, onToggle }) => {
             transition={{ duration: 0.3 }}
           >
             <div className="px-6 pb-6 border-t border-gray-700 pt-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Main Metrics Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                 {/* Revenue Metrics */}
                 <div className="space-y-3">
                   <h4 className="text-lg font-semibold text-primary">Revenue Breakdown</h4>
@@ -171,6 +173,11 @@ const ContractMetricsBox = ({ metrics, isExpanded, onToggle }) => {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              {/* AI Analysis Section - Full Width */}
+              <div className="mt-6">
+                <ContractMetricsAIBox metrics={metrics} />
               </div>
 
               {/* Contract Address */}

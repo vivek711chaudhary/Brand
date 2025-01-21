@@ -13,16 +13,18 @@ import NFTBrandCategory from './pages/NFTBrandCategory';
 import { AnimatePresence } from 'framer-motion';
 
 const Navigation = () => (
-  <nav className="bg-gray-800 p-4">
-    <div className="max-w-[1600px] mx-auto flex flex-wrap gap-4">
-      <Link to="/" className="text-white hover:text-gray-300">Dashboard</Link>
-      <Link to="/metadata" className="text-white hover:text-gray-300">Brand Metadata</Link>
-      <Link to="/metrics" className="text-white hover:text-gray-300">Brand Metrics</Link>
-      <Link to="/metrics-detail" className="text-white hover:text-gray-300">Brand Metrics Detail</Link>
-      <Link to="/profile" className="text-white hover:text-gray-300">Brand Profile</Link>
-      <Link to="/contract-metrics" className="text-white hover:text-gray-300">Contract Metrics</Link>
-      <Link to="/contract-profile" className="text-white hover:text-gray-300">Contract Profile</Link>
-      <Link to="/categories" className="text-white hover:text-gray-300">Brand Categories</Link>
+  <nav className="bg-gray-800 p-4 sticky top-0 z-50 w-full">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1600px] flex items-center justify-between">
+      <div className="flex items-center space-x-6">
+        <Link to="/" className="text-white hover:text-gray-300 transition-colors">Dashboard</Link>
+        <Link to="/metadata" className="text-white hover:text-gray-300 transition-colors">Brand Metadata</Link>
+        <Link to="/metrics" className="text-white hover:text-gray-300 transition-colors">Brand Metrics</Link>
+        <Link to="/metrics-detail" className="text-white hover:text-gray-300 transition-colors">Brand Metrics Detail</Link>
+        <Link to="/profile" className="text-white hover:text-gray-300 transition-colors">Brand Profile</Link>
+        <Link to="/contract-metrics" className="text-white hover:text-gray-300 transition-colors">Contract Metrics</Link>
+        <Link to="/contract-profile" className="text-white hover:text-gray-300 transition-colors">Contract Profile</Link>
+        <Link to="/categories" className="text-white hover:text-gray-300 transition-colors">Brand Categories</Link>
+      </div>
     </div>
   </nav>
 );

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { BrandProfileAIBox } from './AIAnalysis';
 
 const BrandProfileBox = ({ profile, isExpanded, onToggle }) => {
   // Format large numbers
@@ -18,14 +19,7 @@ const BrandProfileBox = ({ profile, isExpanded, onToggle }) => {
   };
 
   return (
-    <motion.div
-      layout
-      className="w-full bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-primary/30"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="bg-gray-800 rounded-lg overflow-hidden">
       {/* Header - Always visible */}
       <div
         onClick={onToggle}
@@ -73,10 +67,11 @@ const BrandProfileBox = ({ profile, isExpanded, onToggle }) => {
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
             transition={{ duration: 0.3 }}
+            className="overflow-hidden"
           >
             <div className="px-6 pb-6 border-t border-gray-700 pt-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -149,10 +144,14 @@ const BrandProfileBox = ({ profile, isExpanded, onToggle }) => {
                 </div>
               </div>
             </div>
+            {/* AI Analysis Section */}
+            <div className="mt-6 px-6 pb-6">
+              <BrandProfileAIBox profile={profile} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 

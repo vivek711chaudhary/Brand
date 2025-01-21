@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { fetchNFTContractMetrics } from '../api/nftContractMetrics';
 import ContractMetricsBox from '../components/ContractMetricsBox';
+import { ContractMetricsAIBox } from '../components/AIAnalysis';
 
 const NFTContractMetrics = () => {
   const [loading, setLoading] = useState(true);
@@ -45,8 +46,8 @@ const NFTContractMetrics = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-900 text-white p-4 md:p-8">
-      <div className="max-w-[1600px] mx-auto"> {/* Increased max-width further */}
+    <div className="container mx-auto px-4 py-8 max-w-[1600px]">
+      <div className="max-w-[1600px] mx-auto"> 
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
             NFT Contract Metrics
@@ -84,6 +85,9 @@ const NFTContractMetrics = () => {
             )}
           </div>
         )}
+      </div>
+      <div className="mt-8">
+        <ContractMetricsAIBox metrics={metrics} />
       </div>
     </div>
   );

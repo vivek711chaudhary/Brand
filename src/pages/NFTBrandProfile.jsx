@@ -26,8 +26,8 @@ const NFTBrandProfile = () => {
     fetchData();
   }, []);
 
-  const handleToggle = (brandId) => {
-    setExpandedProfile(expandedProfile === brandId ? null : brandId);
+  const handleToggle = (profileId) => {
+    setExpandedProfile(expandedProfile === profileId ? null : profileId);
   };
 
   if (error) {
@@ -45,8 +45,8 @@ const NFTBrandProfile = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-900 text-white p-4 md:p-8">
-      <div className="max-w-[1600px] mx-auto"> {/* Increased max-width */}
+    <div className="container mx-auto px-4 py-8 max-w-[1600px] bg-gray-900 text-white">
+      <div className="max-w-[1600px] mx-auto">
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
             NFT Brand Profiles
@@ -63,20 +63,23 @@ const NFTBrandProfile = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            {profiles.map((profile, index) => (
-              <motion.div
-                key={`${profile.brand}-${profile.blockchain}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <BrandProfileBox
-                  profile={profile}
-                  isExpanded={expandedProfile === `${profile.brand}-${profile.blockchain}`}
-                  onToggle={() => handleToggle(`${profile.brand}-${profile.blockchain}`)}
-                />
-              </motion.div>
-            ))}
+            {profiles.map((profile, index) => {
+              const profileId = `${profile.brand}-${profile.blockchain}-${index}`;
+              return (
+                <motion.div
+                  key={profileId}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <BrandProfileBox
+                    profile={profile}
+                    isExpanded={expandedProfile === profileId}
+                    onToggle={() => handleToggle(profileId)}
+                  />
+                </motion.div>
+              );
+            })}
             {profiles.length === 0 && (
               <div className="text-center py-12 bg-gray-800/50 rounded-lg">
                 <p className="text-gray-400">No brand profiles available</p>

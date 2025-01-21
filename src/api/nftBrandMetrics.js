@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = '061f601476ddbedd3633d79b4ec3904c';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const fetchNFTBrandMetrics = async () => {
   const options = {
